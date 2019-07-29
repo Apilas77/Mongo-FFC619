@@ -40,8 +40,12 @@ mongoose.connect(process.env.MONGO_URI)
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
 // <Your code here >
-
-var Person /* = <Your Model> */
+var Schema = mongoose.Schema;
+var Person = new Schema ({
+  name: String,
+  age: Number,
+  favoritefoods: [String]
+});
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
