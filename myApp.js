@@ -14,7 +14,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI)
 
 /** # SCHEMAS and MODELS #
@@ -81,9 +81,19 @@ var Person = new Schema ({
 // person.save(function(err, data) {
 //    ...do your stuff here...
 // });
+var Bob = mongoose.model ("Bob", Person);
+var Bob = new Person
+
+Bob.name = "Bob";
+Bob.age = 45;
+Bob.favoritefoods = ["pizza","burger"]
+Bob.save(err => {
+  if (err)
+  console.log(err);
+});
 
 var createAndSavePerson = function(done) {
-  
+
   done(null /*, data*/);
 
 };
@@ -96,6 +106,19 @@ var createAndSavePerson = function(done) {
 // as the 1st argument, and saves them all in the db.
 // Create many people using `Model.create()`, using the function argument
 // 'arrayOfPeople'.
+var arrayOfPeople = [{
+  name: "Joe",
+  age:52,
+  favoriteFoods: ["sushi"]
+},{
+  name: "Toto",
+  age: 12,
+  favoriteFoods: ["frites","sandwich"]
+},{
+  name: "Charles",
+  age: 46,
+  favoriteFoods: ["Patate"]
+}]
 
 var createManyPeople = function(arrayOfPeople, done) {
     
